@@ -1,0 +1,59 @@
+/* resources/css/search-bar.css */
+.group {
+  display: flex;
+  line-height: 28px;
+  align-items: center;
+  position: relative;
+  max-width: 190px; /* ou ajuste conforme necessário */
+}
+
+.search-input { 
+  /* font-family: "Montserrat", sans-serif; */ /* Comentado para evitar possíveis problemas de fonte não carregada */
+  width: 100%;
+  height: 45px; 
+  padding-left: 2.5rem; 
+  /* Usando cores mais quentes/neutras */
+  box-shadow: 0 0 0 1.5px #3a3635, 0 0 25px -17px #000; /* Borda/sombra base mais quente */
+  border: 0;
+  border-radius: 0.75rem; 
+  background-color: #2a2726; /* Fundo do input mais quente */
+  outline: none;
+  color: #d1cdc7; /* Texto levemente mais quente */
+  transition: all 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+  cursor: text;
+  z-index: 0;
+  /* Remover o ícone 'X' padrão do navegador */
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    -webkit-appearance:none;
+  }
+}
+
+.search-input::placeholder {
+  color: #d1cdc7; 
+  opacity: 0.6; 
+}
+
+.search-input:hover {
+  box-shadow: 0 0 0 2.5px #4a4645, 0px 0px 25px -15px #000; /* Borda/sombra hover mais quente */
+}
+
+.search-input:active {
+  transform: scale(0.95);
+}
+
+.search-input:focus {
+  box-shadow: 0 0 0 2.5px #4a4645; /* Borda/sombra focus mais quente */
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem; 
+  fill: #d1cdc7; /* Cor do ícone igual ao texto */
+  width: 1rem; 
+  height: 1rem; 
+  pointer-events: none;
+  z-index: 1;
+} 
