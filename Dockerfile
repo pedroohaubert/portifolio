@@ -51,5 +51,5 @@ COPY --chown=www-data:www-data . /var/www
 USER www-data
 
 # Expõe a porta 9000 e inicia o servidor php-fpm
-EXPOSE 9000
+EXPOSE 8080
 CMD ["php-fpm"]
