@@ -1,7 +1,7 @@
 import { getAllPosts } from "@/lib/posts";
 import { locales } from "@/lib/i18n/config";
 
-const SITE = "https://pedrohaubert.fly.dev"; // placeholder until custom domain
+const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export async function GET() {
   const posts = locales.flatMap((locale) =>
