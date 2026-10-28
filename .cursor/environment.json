@@ -1,4 +1,4 @@
 {
-  "install": "corepack enable\npnpm install\nmkdir -p \"$HOME/.cursor/skills\"\nif [ -f .cursor/skills-mirror.tgz ]; then\n  tar -xzf .cursor/skills-mirror.tgz --strip-components=1 -C \"$HOME/.cursor/skills\"\nelif [ -d .cursor/skills ]; then\n  cp -a .cursor/skills/. \"$HOME/.cursor/skills/\"\nfi\nSRC=\"${CURSOR_SKILLS_MIRROR:-/cursor/stores/self/skills-mirror}\"\nif [ ! -d \"$SRC\" ]; then SRC=\"/cursor/stores/bc-9644d405-17f4-415e-ba94-6cebedda0b97/skills-mirror\"; fi\nif [ -d \"$SRC\" ]; then\n  if command -v rsync >/dev/null 2>&1; then rsync -a \"$SRC/\" \"$HOME/.cursor/skills/\" || true; else cp -a \"$SRC\"/. \"$HOME/.cursor/skills/\" || true; fi\nfi",
+  "install": "corepack enable\npnpm install",
   "start": "exec pnpm dev --hostname 0.0.0.0 --port 3000"
 }
