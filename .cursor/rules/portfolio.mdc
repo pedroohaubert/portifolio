@@ -22,7 +22,7 @@ Follow `docs/project/scope-v1.md`.
 ## Agent workflow
 
 - Always run **poteto-mode** (`~/.cursor/skills/poteto-mode/SKILL.md` after env install, or Project `skills-mirror/poteto-mode/`). Put that absolute path in every worker kickoff.
-- Skills come from `.cursor/skills-mirror.tgz` (env `install`) and/or Project mirror `/cursor/stores/self/skills-mirror/`. Index: `docs/project/skills-mirror-index.md`.
+- Skills come from Project mirror `/cursor/stores/self/skills-mirror/` and/or `.cursor/skills-mirror.tgz` (tarball stays in-repo; current env install does not auto-extract). Index: `docs/project/skills-mirror-index.md`.
 
 ## Environment (critical)
 

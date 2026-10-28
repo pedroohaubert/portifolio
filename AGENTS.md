@@ -15,4 +15,4 @@ Durable context lives in **`docs/project/`** (start at `docs/project/README.md`)
 - Aesthetic: Mechanical Pastoral + EfT Mecanical (`docs/project/aesthetic-definition.md`)
 - Scope: `docs/project/scope-v1.md`
 - Preferences / Environment: `docs/project/preferences.md` — use Environment **portifolio** `67b3b94f-d27e-11f1-89ee-7aa6f0729b11`; never propose/Save an orphan Environment from chat
-- Workflow: poteto-mode required; skills from `.cursor/skills-mirror.tgz` (see `docs/project/skills-mirror-index.md`)
+- Workflow: poteto-mode required; skills from Project mirror and/or `.cursor/skills-mirror.tgz` (see `docs/project/skills-mirror-index.md`)

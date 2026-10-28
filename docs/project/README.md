@@ -24,7 +24,7 @@ Durable briefs for agents working on Pedro Haubert’s portfolio. Prefer these p
 
 | Path | Role |
 |------|------|
-| `.cursor/environment.json` | Cloud install + `pnpm dev` start (extracts skills tarball) |
-| `.cursor/skills-mirror.tgz` | Pedro’s skills for cloud VMs |
+| `.cursor/environment.json` | Cloud install (`corepack` + `pnpm`) + `pnpm dev` start |
+| `.cursor/skills-mirror.tgz` | Pedro’s skills tarball (in-repo; extract manually / from Project mirror) |
 | `.cursor/rules/portfolio.mdc` | Always-on portfolio rules |
 | `AGENTS.md` | Next.js agent note + pointer to this folder |

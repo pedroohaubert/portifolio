@@ -8,17 +8,17 @@ count: 42
 
 **42 skills** mirrored for this portfolio.
 
-**Repo (cloud VMs):** `.cursor/skills-mirror.tgz` — extracted by `.cursor/environment.json` `install` into `~/.cursor/skills`.
+**Repo:** `.cursor/skills-mirror.tgz` (kept in-repo; Environment `install` is currently `corepack` + `pnpm` only — extract manually or from Project Context when needed).
 
 **Project Context (when mounted):** `/cursor/stores/self/skills-mirror/` or `/cursor/stores/bc-9644d405-17f4-415e-ba94-6cebedda0b97/skills-mirror/`.
 
 ## Cloud agent kickoff (one-liner)
 
-> Read and follow skills under `~/.cursor/skills/` (from `.cursor/skills-mirror.tgz`) or `/cursor/stores/self/skills-mirror/`, especially design skills: `design-taste-frontend`, `emil-design-eng`, `high-end-visual-design`, `animate`, `brandkit`. Always run poteto-mode.
+> Read and follow skills under `/cursor/stores/self/skills-mirror/` or `~/.cursor/skills/` (after extracting `.cursor/skills-mirror.tgz`), especially design skills: `design-taste-frontend`, `emil-design-eng`, `high-end-visual-design`, `animate`, `brandkit`. Always run poteto-mode.
 
-## Environment `install`
+## Manual extract (optional)
 
-Canonical install lives in `.cursor/environment.json` (tar extract + optional Project Context rsync). Manual equivalent:
+`.cursor/environment.json` does **not** extract the tarball this round (Pedro: install/start only). When a VM needs the mirror on disk:
 
 ```bash
 mkdir -p "$HOME/.cursor/skills"
