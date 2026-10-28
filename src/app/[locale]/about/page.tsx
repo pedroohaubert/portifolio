@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getAbout } from "@/lib/about";
 import { resolveLocale } from "@/lib/i18n/params";
 
 export async function generateMetadata({
@@ -16,19 +17,7 @@ export default async function AboutPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale, dict } = await resolveLocale(params);
-
-  const body =
-    locale === "pt"
-      ? [
-          "Este é o about longo — espaço para biografia, valores e o que Pedro quer que o visitante entenda além do CV.",
-          "Substitua este parágrafo por texto real. Tom: direto, tipográfico, sem marketing fluff.",
-          "Cidade, formação, craft, e como você trabalha cabem aqui.",
-        ]
-      : [
-          "This is the long about — room for biography, values, and what Pedro wants a visitor to understand beyond the CV.",
-          "Replace this paragraph with real copy. Tone: direct, typographic, no marketing fluff.",
-          "City, education, craft, and how you work belong here.",
-        ];
+  const { paragraphs } = getAbout(locale);
 
   return (
     <div>
@@ -36,8 +25,8 @@ export default async function AboutPage({
         {dict.about.title}
       </h1>
       <p className="measure mb-8 text-[var(--fg-muted)]">{dict.about.intro}</p>
-      {body.map((p) => (
-        <p key={p} className="measure mb-4">
+      {paragraphs.map((p) => (
+        <p key={p.slice(0, 48)} className="measure mb-4">
           {p}
         </p>
       ))}

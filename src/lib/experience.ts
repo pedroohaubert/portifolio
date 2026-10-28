@@ -11,34 +11,54 @@ export type Role = {
 const data: Record<Locale, Role[]> = {
   pt: [
     {
-      org: "Placeholder Co.",
+      org: "Independente",
       title: "Software engineer",
       start: "2024",
       end: "agora",
-      summary: "Substituir por cargo real, stack e impacto.",
+      summary:
+        "Full-time em TypeScript, Python e Java. Constrói produtos web, integrações e fluxos com agentes de IA (Cursor, evals, automações). Empregador e datas exatas ficam para Pedro confirmar.",
     },
     {
       org: "Unisinos",
       title: "Ciência da Computação",
       start: "—",
-      end: "—",
-      summary: "Formação — ajustar datas e detalhes.",
+      end: "cursando",
+      summary:
+        "Formação em andamento no Brasil. Pesquisa e builds acadêmicos cruzam com trabalho em IA educacional (ver projeto Sophia).",
+    },
+    {
+      org: "Pesquisa / Sophia",
+      title: "Assistente educacional com IA",
+      start: "2024",
+      end: "2025",
+      summary:
+        "Plataforma de pesquisa com a IA Sophia como assistente para docentes e discentes. Código em TypeScript no GitHub.",
     },
   ],
   en: [
     {
-      org: "Placeholder Co.",
+      org: "Independent",
       title: "Software engineer",
       start: "2024",
       end: "present",
-      summary: "Replace with real role, stack, and impact.",
+      summary:
+        "Full-time work in TypeScript, Python, and Java. Ships web products, integrations, and AI-agent workflows (Cursor, evals, automation). Employer and exact dates are for Pedro to confirm.",
     },
     {
       org: "Unisinos",
       title: "Computer Science",
       start: "—",
-      end: "—",
-      summary: "Education — fill in dates and details.",
+      end: "in progress",
+      summary:
+        "Degree in progress in Brazil. Academic research and builds overlap with educational AI work (see the Sophia project).",
+    },
+    {
+      org: "Research / Sophia",
+      title: "Educational AI assistant",
+      start: "2024",
+      end: "2025",
+      summary:
+        "Research platform where Sophia acts as an AI assistant for teachers and students. TypeScript on GitHub.",
     },
   ],
 };

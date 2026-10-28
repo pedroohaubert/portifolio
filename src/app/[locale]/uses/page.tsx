@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { resolveLocale } from "@/lib/i18n/params";
+import { getUses } from "@/lib/uses";
 
 export async function generateMetadata({
   params,
@@ -15,12 +16,8 @@ export default async function UsesPage({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { dict } = await resolveLocale(params);
-
-  const groups = [
-    { title: "Hardware", items: ["Mac", "Nintendo Switch Pro Controller"] },
-    { title: "Software", items: ["Cursor", "Next.js", "pnpm"] },
-  ];
+  const { locale, dict } = await resolveLocale(params);
+  const groups = getUses(locale);
 
   return (
     <div>
