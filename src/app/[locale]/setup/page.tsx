@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { HomeMark } from "@/components/home-mark";
 import { resolveLocale } from "@/lib/i18n/params";
 import { getUses } from "@/lib/uses";
 
@@ -8,10 +9,10 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { dict } = await resolveLocale(params);
-  return { title: dict.uses.title };
+  return { title: dict.setup.title };
 }
 
-export default async function UsesPage({
+export default async function SetupPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
@@ -21,17 +22,16 @@ export default async function UsesPage({
 
   return (
     <div>
-      <h1 className="mb-3 text-[clamp(1.8rem,4vw,2.4rem)] font-bold tracking-[-0.02em]">
-        {dict.uses.title}
-      </h1>
-      <p className="measure mb-10 text-[var(--fg-muted)]">{dict.uses.intro}</p>
+      <HomeMark locale={locale} />
+      <h1 className="page-title">{dict.setup.title}</h1>
+      <p className="column-support">{dict.setup.intro}</p>
       {groups.map((group) => (
-        <section key={group.title} className="mb-8">
-          <h2 className="mb-3 text-[1.1rem] font-bold">{group.title}</h2>
-          <ul className="list-none border-t border-[var(--rule)] p-0">
+        <section key={group.title} className="column-section">
+          <h2>{group.title}</h2>
+          <ul className="column-list">
             {group.items.map((item) => (
-              <li key={item} className="border-b border-[var(--rule)] py-2 text-[var(--fg)]">
-                {item}
+              <li key={item}>
+                <span className="column-title">{item}</span>
               </li>
             ))}
           </ul>

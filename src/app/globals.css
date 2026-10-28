@@ -84,12 +84,13 @@ html {
 body {
   margin: 0;
   min-height: 100dvh;
+  overflow-x: clip;
   background: var(--bg);
   color: var(--fg);
   font-family: "EfT Mecanical", ui-serif, Georgia, serif;
   font-weight: 400;
   font-size: 1.0625rem;
-  line-height: 1.6;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -105,17 +106,31 @@ body::before {
 
 a {
   color: inherit;
-  text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
-  transition: color 180ms ease-out, background-color 180ms ease-out;
+  transition: color 160ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-a:hover {
-  color: var(--accent);
+button {
+  font: inherit;
+  color: inherit;
+  transition:
+    transform 120ms cubic-bezier(0.23, 1, 0.32, 1),
+    color 160ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a:hover,
+  button:hover {
+    color: var(--accent);
+  }
 }
 
 :focus-visible {
-  outline: 1px solid var(--accent);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 
@@ -134,39 +149,168 @@ a:hover {
   color: var(--fg);
 }
 
-.measure {
-  max-width: 42rem;
-}
-
-.hairline {
-  border: 0;
-  border-top: 1px solid var(--rule);
-}
-
-.mono {
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  letter-spacing: 0.02em;
+.ascii-sharks {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
 .site-shell {
   position: relative;
   z-index: 1;
-  width: min(100% - 2.5rem, 42rem);
-  margin-inline: auto;
-  padding-block: 2rem 4rem;
+  width: min(38rem, 100%);
+  margin-right: auto;
+  margin-left: 0;
+  padding: 1.5rem 1.25rem 4.5rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .site-shell {
-    width: min(100% - 4rem, 42rem);
-    padding-block: 2.75rem 5rem;
+    width: min(38rem, calc(100% - 4rem));
+    padding: 2.25rem 0 5rem 4rem;
   }
 }
 
-.viewport-bleed {
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+.column-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 0 1.75rem;
+}
+
+.column-name {
+  margin: 0 0 0.85rem;
+  font-size: clamp(2.6rem, 8vw, 3.5rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+.page-title {
+  margin: 0 0 0.85rem;
+  font-size: clamp(2rem, 6vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+.column-support {
+  margin: 0;
+  max-width: 38rem;
+}
+
+.section-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1.15rem;
+  margin-top: 1.75rem;
+}
+
+.section-nav a {
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.column-section {
+  margin-top: 2.75rem;
+  scroll-margin-top: 1.5rem;
+}
+
+.column-section h2 {
+  margin: 0 0 1rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.column-section:target h2 {
+  color: var(--accent);
+}
+
+.column-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.column-list a,
+.column-title,
+.home-mark a {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.column-list p,
+.post-meta {
+  margin: 0.25rem 0 0;
+}
+
+.column-more {
+  margin: 1.15rem 0 0;
+}
+
+.home-mark {
+  margin: 0 0 1.75rem;
+}
+
+.site-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  margin-top: 4.5rem;
+}
+
+.site-footer-links,
+.site-footer-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1.15rem;
+}
+
+.site-footer a {
+  text-decoration: none;
+}
+
+.post-body {
+  max-width: 38rem;
+}
+
+.post-body :is(p, ul, ol) {
+  margin: 0 0 1rem;
+}
+
+.post-body a {
+  color: var(--accent);
+}
+
+.post-body :is(h2, h3) {
+  margin: 2rem 0 0.6rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.post-body code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}
+
+.post-body pre {
+  overflow-x: auto;
+  margin: 0 0 1rem;
+  padding: 1rem;
+  background: var(--bg-elevated);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.post-body pre code {
+  font-size: inherit;
 }

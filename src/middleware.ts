@@ -17,8 +17,21 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  const retired = new Set(["experience", "about", "now", "projects"]);
   const segment = pathname.split("/")[1];
+  const second = pathname.split("/")[2];
+
   if (isLocale(segment)) {
+    if (second && retired.has(second)) {
+      const url = request.nextUrl.clone();
+      url.pathname = `/${segment}`;
+      return NextResponse.redirect(url);
+    }
+    if (second === "uses") {
+      const url = request.nextUrl.clone();
+      url.pathname = `/${segment}/setup`;
+      return NextResponse.redirect(url);
+    }
     return NextResponse.next();
   }
 
@@ -33,6 +46,14 @@ export function middleware(request: NextRequest) {
     cookieLocale && isLocale(cookieLocale) ? cookieLocale : fromHeader;
 
   const url = request.nextUrl.clone();
+  if (retired.has(segment)) {
+    url.pathname = `/${locale}`;
+    return NextResponse.redirect(url);
+  }
+  if (segment === "uses") {
+    url.pathname = `/${locale}/setup`;
+    return NextResponse.redirect(url);
+  }
   url.pathname = `/${locale}${pathname === "/" ? "" : pathname}`;
   return NextResponse.redirect(url);
 }

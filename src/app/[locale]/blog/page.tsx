@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { HomeMark } from "@/components/home-mark";
 import { resolveLocale } from "@/lib/i18n/params";
 import { getAllPosts } from "@/lib/posts";
 
@@ -22,32 +23,20 @@ export default async function BlogIndexPage({
 
   return (
     <div>
-      <h1 className="mb-3 text-[clamp(1.8rem,4vw,2.4rem)] font-bold tracking-[-0.02em]">
-        {dict.blog.title}
-      </h1>
-      <p className="measure mb-10 text-[var(--fg-muted)]">{dict.blog.intro}</p>
+      <HomeMark locale={locale} />
+      <h1 className="page-title">{dict.blog.title}</h1>
+      <p className="column-support">{dict.blog.intro}</p>
       {posts.length === 0 ? (
-        <p className="text-[var(--fg-muted)]">{dict.blog.empty}</p>
+        <p>{dict.blog.empty}</p>
       ) : (
-        <ul className="list-none p-0">
+        <ul className="column-list column-section">
           {posts.map((post) => (
-            <li key={post.slug} className="border-t border-[var(--rule)] py-4">
-              <div className="flex flex-wrap items-baseline justify-between gap-2">
-                <Link
-                  href={`/${locale}/blog/${post.slug}`}
-                  className="text-[1.1rem] no-underline hover:text-[var(--accent)]"
-                >
-                  {post.title}
-                </Link>
-                <time className="mono text-[var(--fg-faint)]" dateTime={post.date}>
-                  {post.date}
-                </time>
-              </div>
-              {post.description ? (
-                <p className="measure mt-1 mb-0 text-[0.95rem] text-[var(--fg-muted)]">
-                  {post.description}
-                </p>
-              ) : null}
+            <li key={post.slug}>
+              <Link href={`/${locale}/blog/${post.slug}`}>{post.title}</Link>
+              <p>
+                <time dateTime={post.date}>{post.date}</time>
+                {post.description ? `. ${post.description}` : null}
+              </p>
             </li>
           ))}
         </ul>
