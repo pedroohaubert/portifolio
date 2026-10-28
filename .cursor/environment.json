@@ -1,4 +1,4 @@
 {
-  "install": "corepack enable\npnpm install",
+  "install": "corepack enable\npnpm install\nSRC=\"${CURSOR_SKILLS_MIRROR:-/cursor/stores/self/skills-mirror}\"\nif [ ! -d \"$SRC\" ]; then SRC=\"/cursor/stores/bc-9644d405-17f4-415e-ba94-6cebedda0b97/skills-mirror\"; fi\nmkdir -p \"$HOME/.cursor/skills\"\nif [ -d \"$SRC\" ]; then rsync -a \"$SRC/\" \"$HOME/.cursor/skills/\" || true; fi",
   "start": "exec pnpm dev --hostname 0.0.0.0 --port 3000"
 }
