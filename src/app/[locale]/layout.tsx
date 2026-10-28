@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
+import { AsciiSharks } from "@/components/ascii-sharks";
 import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
 import { isLocale, locales, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
@@ -50,9 +50,9 @@ export default async function LocaleLayout({
         />
       </head>
       <body>
+        <AsciiSharks />
         <ThemeProvider>
           <div className="site-shell">
-            <SiteHeader locale={locale} dict={dict} />
             <main>{children}</main>
             <SiteFooter locale={locale} dict={dict} />
           </div>

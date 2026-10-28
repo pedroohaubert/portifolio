@@ -16,7 +16,7 @@ export function LocaleSwitch({
   const other: Locale = locale === "pt" ? "en" : "pt";
 
   return (
-    <span className="mono text-[var(--fg-muted)]">
+    <span>
       {label}:{" "}
       <Link
         href={`/${other}${rest}`}

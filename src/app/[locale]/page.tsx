@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { DitherHero } from "@/components/dither-hero";
-import { ScrambleIn } from "@/components/scramble-in";
+import Image from "next/image";
+import { ColumnSection } from "@/components/column-section";
+import { getColumnItems, sectionIds } from "@/lib/column";
 import { resolveLocale } from "@/lib/i18n/params";
 
 export default async function HomePage({
@@ -9,37 +9,44 @@ export default async function HomePage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale, dict } = await resolveLocale(params);
-  const base = `/${locale}`;
+  const items = getColumnItems(locale);
+
+  const sections = sectionIds.map((id) => ({
+    id,
+    label: dict.sections[id],
+    items:
+      id === "writing" && items.writing.length === 0
+        ? [{ title: dict.blog.empty, detail: "" }]
+        : items[id],
+    more:
+      id === "writing"
+        ? { href: `/${locale}/blog`, label: dict.footer.allPosts }
+        : undefined,
+  }));
 
   return (
     <div>
-      <DitherHero />
-      <h1 className="mb-4 text-[clamp(2.4rem,7vw,3.75rem)] font-bold leading-[1.05] tracking-[-0.03em]">
-        <ScrambleIn text={dict.home.name} />
-      </h1>
-      <p className="measure mb-3 text-[1.2rem] leading-snug text-[var(--fg)]">
-        {dict.home.headline}
-      </p>
-      <p className="measure mb-8 text-[var(--fg-muted)]">{dict.home.support}</p>
-      <div className="flex flex-wrap gap-x-5 gap-y-2 text-[var(--fg-muted)]">
-        <Link href={`${base}/blog`} className="no-underline hover:text-[var(--accent)]">
-          {dict.home.ctaBlog}
-        </Link>
-        <a
-          href="https://github.com/pedroohaubert/portifolio"
-          className="no-underline hover:text-[var(--accent)]"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          {dict.home.ctaGithub}
-        </a>
-        <Link
-          href={`${base}/experience`}
-          className="no-underline hover:text-[var(--accent)]"
-        >
-          {dict.home.ctaExperience}
-        </Link>
-      </div>
+      <Image
+        src="/images/mood/balloon-grassfield.png"
+        alt={dict.home.photoAlt}
+        width={1677}
+        height={938}
+        priority
+        sizes="(min-width: 900px) 608px, 100vw"
+        className="column-photo"
+      />
+      <h1 className="column-name">{dict.home.name}</h1>
+      <p className="column-support">{dict.home.support}</p>
+      <nav className="section-nav" aria-label={dict.sections.label}>
+        {sections.map((section) => (
+          <a key={section.id} href={`#${section.id}`}>
+            {section.label}
+          </a>
+        ))}
+      </nav>
+      {sections.map((section) => (
+        <ColumnSection key={section.id} {...section} />
+      ))}
     </div>
   );
 }

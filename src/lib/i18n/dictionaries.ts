@@ -4,30 +4,21 @@ const pt = {
   meta: {
     title: "Pedro Haubert",
     description:
-      "Software engineer no Brasil — TypeScript, Python, Java, agentes de IA. Portfólio Mechanical Pastoral.",
-  },
-  nav: {
-    home: "home",
-    experience: "experience",
-    blog: "blog",
-    projects: "projects",
-    about: "about",
-    now: "now",
-    uses: "uses",
-    github: "github",
+      "Software engineer no Brasil. TypeScript, Python, Java e agentes de IA.",
   },
   home: {
     name: "Pedro Haubert",
-    headline: "Software engineer. Constrói com tipo, textura e agentes.",
     support:
-      "Brasil · Unisinos CS · TypeScript, Python, Java. Este site é Mechanical Pastoral.",
-    ctaBlog: "ler o blog",
-    ctaGithub: "código no github",
-    ctaExperience: "experience",
+      "Software engineer no Brasil. Estudo Ciência da Computação na Unisinos e construo com TypeScript, Python e Java, com agentes no ciclo de build.",
+    photoAlt:
+      "Balões de ar quente sobre um mosaico de campos verdes, vistos de cima.",
   },
-  experience: {
-    title: "Experience",
-    intro: "Linha do tempo compacta. Datas e empregador ainda abertos a correção.",
+  sections: {
+    label: "Seções",
+    writing: "escrita",
+    projects: "projetos",
+    studies: "estudos",
+    beyond: "além do trabalho",
   },
   blog: {
     title: "Blog",
@@ -35,23 +26,15 @@ const pt = {
     empty: "Nenhum post publicado ainda.",
     draftBadge: "draft",
   },
-  projects: {
-    title: "Projects",
-    intro: "Builds públicos no GitHub — pesquisa, craft e experimentos.",
-  },
-  about: {
-    title: "About",
-    intro: "Versão longa — além da frase da home.",
-  },
-  now: {
-    title: "Now",
-    intro: "O que está em foco agora. Atualizo quando a semana muda.",
-  },
-  uses: {
-    title: "Uses",
-    intro: "Ferramentas e setup que uso de verdade.",
+  setup: {
+    title: "Setup",
+    intro: "Ferramentas e o setup de código que eu uso de verdade.",
   },
   footer: {
+    allPosts: "todos os posts",
+    setup: "setup",
+    github: "GitHub",
+    linkedin: "LinkedIn",
     theme: "tema",
     language: "idioma",
     rss: "rss",
@@ -66,30 +49,20 @@ const en: DeepString<typeof pt> = {
   meta: {
     title: "Pedro Haubert",
     description:
-      "Software engineer in Brazil — TypeScript, Python, Java, AI agents. Mechanical Pastoral portfolio.",
-  },
-  nav: {
-    home: "home",
-    experience: "experience",
-    blog: "blog",
-    projects: "projects",
-    about: "about",
-    now: "now",
-    uses: "uses",
-    github: "github",
+      "Software engineer in Brazil. TypeScript, Python, Java, and AI agents.",
   },
   home: {
     name: "Pedro Haubert",
-    headline: "Software engineer. Builds with type, texture, and agents.",
     support:
-      "Brazil · Unisinos CS · TypeScript, Python, Java. This site is Mechanical Pastoral.",
-    ctaBlog: "read the blog",
-    ctaGithub: "code on github",
-    ctaExperience: "experience",
+      "Software engineer in Brazil. I study computer science at Unisinos and build with TypeScript, Python, and Java, with agents in the build loop.",
+    photoAlt: "Hot air balloons over a patchwork of green fields, seen from above.",
   },
-  experience: {
-    title: "Experience",
-    intro: "Compact timeline. Dates and employer still open to correction.",
+  sections: {
+    label: "Sections",
+    writing: "writing",
+    projects: "projects",
+    studies: "studies",
+    beyond: "beyond work",
   },
   blog: {
     title: "Blog",
@@ -97,23 +70,15 @@ const en: DeepString<typeof pt> = {
     empty: "No published posts yet.",
     draftBadge: "draft",
   },
-  projects: {
-    title: "Projects",
-    intro: "Public builds on GitHub — research, craft, and experiments.",
-  },
-  about: {
-    title: "About",
-    intro: "Long form — beyond the home line.",
-  },
-  now: {
-    title: "Now",
-    intro: "What is in focus now. I update when the week changes.",
-  },
-  uses: {
-    title: "Uses",
-    intro: "Tools and setup I actually use.",
+  setup: {
+    title: "Setup",
+    intro: "Tools and the coding setup I actually use.",
   },
   footer: {
+    allPosts: "all posts",
+    setup: "setup",
+    github: "GitHub",
+    linkedin: "LinkedIn",
     theme: "theme",
     language: "language",
     rss: "rss",

@@ -1,6 +1,6 @@
 # portifolio
 
-Personal site for **Pedro Haubert** — **Mechanical Pastoral** (EfT Mecanical, dither hero, subtle ASCII, dark-first + light toggle, PT/EN).
+Personal site for Pedro Haubert. Mechanical Pastoral. One dark column, EfT Mecanical, ASCII sharks, PT/EN.
 
 ## Run
 
@@ -26,21 +26,20 @@ pnpm build && pnpm start
 
 | Path | Notes |
 |------|--------|
-| `/[locale]` | Home — dither + ASCII + scramble name |
-| `/[locale]/experience` | Timeline (placeholder) |
-| `/[locale]/blog` | Published index |
+| `/[locale]` | One column. Writing, projects, studies, beyond work |
+| `/[locale]/blog` | All posts |
 | `/[locale]/blog/[slug]` | MDX post |
-| `/[locale]/projects` | Named work list |
-| `/[locale]/about` | Long about |
-| `/[locale]/now` | Now |
-| `/[locale]/uses` | Tools / setup |
+| `/[locale]/setup` | Coding setup |
 | `/feed.xml` | RSS |
+
+`/experience`, `/about`, `/now`, `/projects`, and `/uses` redirect into that column or to setup.
 
 Locales: `pt` (default), `en`. Theme toggle in the footer.
 
 ## Pedro should fill
 
-- Real experience, about, now, uses, projects copy
+- Real studies, projects, and beyond-work copy
+- The LinkedIn URL in `src/lib/profiles.ts`
 - More posts (`draft: true` for unpublished)
 - `NEXT_PUBLIC_SITE_URL` for production RSS absolute links
 - Deploy (Vercel recommended) when ready
