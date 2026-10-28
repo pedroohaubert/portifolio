@@ -3,7 +3,7 @@ import { AsciiField } from "@/components/ascii-field";
 
 export function DitherHero() {
   return (
-    <div className="relative -mx-[1.25rem] mb-10 h-[min(52vh,28rem)] overflow-hidden md:-mx-8">
+    <div className="viewport-bleed relative mb-10 h-[min(48vh,26rem)] overflow-hidden">
       <Image
         src="/images/mood/sfcompute-pastoral.png"
         alt=""
@@ -17,10 +17,9 @@ export function DitherHero() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "linear-gradient(to top, var(--bg) 0%, transparent 42%), linear-gradient(to right, var(--bg) 0%, transparent 28%)",
+            "linear-gradient(to top, var(--bg) 0%, transparent 48%), linear-gradient(to right, var(--bg) 0%, transparent 32%)",
         }}
       />
-      {/* scanline edge — craft border, not full-page CRT */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 bottom-0 h-8 opacity-40"
