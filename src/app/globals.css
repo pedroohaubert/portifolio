@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* Mechanical Pastoral tokens — dark default */
 :root {
   --bg: #0d0d0c;
   --bg-elevated: #141413;
@@ -94,7 +93,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* subtle grain — craft, not CRT */
 body::before {
   content: "";
   pointer-events: none;
@@ -166,8 +164,7 @@ a:hover {
   }
 }
 
-/* Full-bleed dither plane inside the editorial column shell */
-.dither-hero {
+.viewport-bleed {
   width: 100vw;
   max-width: 100vw;
   margin-left: calc(50% - 50vw);

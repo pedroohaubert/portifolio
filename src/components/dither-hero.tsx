@@ -3,7 +3,7 @@ import { AsciiField } from "@/components/ascii-field";
 
 export function DitherHero() {
   return (
-    <div className="dither-hero relative mb-10 h-[min(48vh,26rem)] overflow-hidden">
+    <div className="viewport-bleed relative mb-10 h-[min(48vh,26rem)] overflow-hidden">
       <Image
         src="/images/mood/sfcompute-pastoral.png"
         alt=""
