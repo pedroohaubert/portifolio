@@ -165,3 +165,11 @@ a:hover {
     padding-block: 2.75rem 5rem;
   }
 }
+
+/* Full-bleed dither plane inside the editorial column shell */
+.dither-hero {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
