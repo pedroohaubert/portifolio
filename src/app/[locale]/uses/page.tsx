@@ -1,27 +1,26 @@
-import { notFound } from "next/navigation";
-import { isLocale, type Locale } from "@/lib/i18n/config";
-import { getDictionary } from "@/lib/i18n/dictionaries";
+import type { Metadata } from "next";
+import { resolveLocale } from "@/lib/i18n/params";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { dict } = await resolveLocale(params);
+  return { title: dict.uses.title };
+}
 
 export default async function UsesPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale: raw } = await params;
-  if (!isLocale(raw)) notFound();
-  const locale = raw as Locale;
-  const dict = getDictionary(locale);
+  const { dict } = await resolveLocale(params);
 
-  const groups =
-    locale === "pt"
-      ? [
-          { title: "Hardware", items: ["Mac", "Nintendo Switch Pro Controller"] },
-          { title: "Software", items: ["Cursor", "Next.js", "pnpm"] },
-        ]
-      : [
-          { title: "Hardware", items: ["Mac", "Nintendo Switch Pro Controller"] },
-          { title: "Software", items: ["Cursor", "Next.js", "pnpm"] },
-        ];
+  const groups = [
+    { title: "Hardware", items: ["Mac", "Nintendo Switch Pro Controller"] },
+    { title: "Software", items: ["Cursor", "Next.js", "pnpm"] },
+  ];
 
   return (
     <div>

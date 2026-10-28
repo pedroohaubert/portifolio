@@ -12,6 +12,9 @@ export function AsciiField() {
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
 
     let raf = 0;
     let pointer = { x: 0.5, y: 0.5 };

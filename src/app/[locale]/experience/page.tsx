@@ -1,17 +1,22 @@
-import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { getExperience } from "@/lib/experience";
-import { isLocale, type Locale } from "@/lib/i18n/config";
-import { getDictionary } from "@/lib/i18n/dictionaries";
+import { resolveLocale } from "@/lib/i18n/params";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { dict } = await resolveLocale(params);
+  return { title: dict.experience.title };
+}
 
 export default async function ExperiencePage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale: raw } = await params;
-  if (!isLocale(raw)) notFound();
-  const locale = raw as Locale;
-  const dict = getDictionary(locale);
+  const { locale, dict } = await resolveLocale(params);
   const roles = getExperience(locale);
 
   return (

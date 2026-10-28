@@ -1,19 +1,14 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
 import { DitherHero } from "@/components/dither-hero";
 import { ScrambleIn } from "@/components/scramble-in";
-import { isLocale, type Locale } from "@/lib/i18n/config";
-import { getDictionary } from "@/lib/i18n/dictionaries";
+import { resolveLocale } from "@/lib/i18n/params";
 
 export default async function HomePage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale: raw } = await params;
-  if (!isLocale(raw)) notFound();
-  const locale = raw as Locale;
-  const dict = getDictionary(locale);
+  const { locale, dict } = await resolveLocale(params);
   const base = `/${locale}`;
 
   return (

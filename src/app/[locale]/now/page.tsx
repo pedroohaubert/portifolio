@@ -1,16 +1,21 @@
-import { notFound } from "next/navigation";
-import { isLocale, type Locale } from "@/lib/i18n/config";
-import { getDictionary } from "@/lib/i18n/dictionaries";
+import type { Metadata } from "next";
+import { resolveLocale } from "@/lib/i18n/params";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { dict } = await resolveLocale(params);
+  return { title: dict.now.title };
+}
 
 export default async function NowPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale: raw } = await params;
-  if (!isLocale(raw)) notFound();
-  const locale = raw as Locale;
-  const dict = getDictionary(locale);
+  const { locale, dict } = await resolveLocale(params);
 
   const items =
     locale === "pt"

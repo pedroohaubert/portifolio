@@ -23,10 +23,14 @@ export function middleware(request: NextRequest) {
   }
 
   const cookieLocale = request.cookies.get("NEXT_LOCALE")?.value;
-  const header = request.headers.get("accept-language") ?? "";
-  const preferred = header.toLowerCase().startsWith("pt") ? "pt" : defaultLocale;
+  const header = (request.headers.get("accept-language") ?? "").toLowerCase();
+  const fromHeader = header.startsWith("pt")
+    ? "pt"
+    : header.startsWith("en")
+      ? "en"
+      : defaultLocale;
   const locale =
-    cookieLocale && isLocale(cookieLocale) ? cookieLocale : preferred;
+    cookieLocale && isLocale(cookieLocale) ? cookieLocale : fromHeader;
 
   const url = request.nextUrl.clone();
   url.pathname = `/${locale}${pathname === "/" ? "" : pathname}`;

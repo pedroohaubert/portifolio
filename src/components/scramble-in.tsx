@@ -15,6 +15,11 @@ export function ScrambleIn({
   const [done, setDone] = useState(false);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setDisplay(text);
+      setDone(true);
+      return;
+    }
     let frame = 0;
     const total = Math.max(18, text.length + 8);
     const id = window.setInterval(() => {

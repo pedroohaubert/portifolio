@@ -14,10 +14,19 @@ export function DitherHero() {
       />
       <div
         aria-hidden
-        className="absolute inset-0"
+        className="pointer-events-none absolute inset-0"
         style={{
           background:
             "linear-gradient(to top, var(--bg) 0%, transparent 42%), linear-gradient(to right, var(--bg) 0%, transparent 28%)",
+        }}
+      />
+      {/* scanline edge — craft border, not full-page CRT */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-8 opacity-40"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.35) 2px, rgba(0,0,0,0.35) 3px)",
         }}
       />
       <AsciiField />

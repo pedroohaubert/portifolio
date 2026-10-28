@@ -1,17 +1,22 @@
-import { notFound } from "next/navigation";
-import { isLocale, type Locale } from "@/lib/i18n/config";
-import { getDictionary } from "@/lib/i18n/dictionaries";
+import type { Metadata } from "next";
+import { resolveLocale } from "@/lib/i18n/params";
 import { getProjects } from "@/lib/projects";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { dict } = await resolveLocale(params);
+  return { title: dict.projects.title };
+}
 
 export default async function ProjectsPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale: raw } = await params;
-  if (!isLocale(raw)) notFound();
-  const locale = raw as Locale;
-  const dict = getDictionary(locale);
+  const { locale, dict } = await resolveLocale(params);
   const projects = getProjects(locale);
 
   return (
