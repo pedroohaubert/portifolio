@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+/* Mechanical Pastoral tokens — dark default */
+:root {
+  --bg: #0d0d0c;
+  --bg-elevated: #141413;
+  --fg: #e8e4dc;
+  --fg-muted: #9a958c;
+  --fg-faint: #5c574f;
+  --accent: #1e4bff;
+  --accent-soft: #3d6b4f;
+  --rule: rgba(232, 228, 220, 0.12);
+  --dither-sky: #0b3d8c;
+  color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  --bg: #f2efe8;
+  --bg-elevated: #e8e4dc;
+  --fg: #1a1916;
+  --fg-muted: #5c574f;
+  --fg-faint: #9a958c;
+  --accent: #1e4bff;
+  --accent-soft: #3d6b4f;
+  --rule: rgba(26, 25, 22, 0.14);
+  --dither-sky: #0b3d8c;
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-faint: var(--fg-faint);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-rule: var(--rule);
+  --font-display: "EfT Mecanical", ui-serif, Georgia, serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+@font-face {
+  font-family: "EfT Mecanical";
+  src: url("/fonts/EFT_Mecanical/EfTMecanical-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "EfT Mecanical";
+  src: url("/fonts/EFT_Mecanical/EfTMecanical-Book.woff") format("woff");
+  font-weight: 350;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "EfT Mecanical";
+  src: url("/fonts/EFT_Mecanical/EfTMecanical-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "EfT Mecanical";
+  src: url("/fonts/EFT_Mecanical/EfTMecanical-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "EfT Mecanical", ui-serif, Georgia, serif;
+  font-weight: 400;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* subtle grain — craft, not CRT */
+body::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: color 180ms ease-out, background-color 180ms ease-out;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 35%, transparent);
+  color: var(--fg);
+}
+
+.measure {
+  max-width: 42rem;
+}
+
+.hairline {
+  border: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+}
+
+.site-shell {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 2.5rem, 42rem);
+  margin-inline: auto;
+  padding-block: 2rem 4rem;
+}
+
+@media (min-width: 768px) {
+  .site-shell {
+    width: min(100% - 4rem, 42rem);
+    padding-block: 2.75rem 5rem;
+  }
+}
