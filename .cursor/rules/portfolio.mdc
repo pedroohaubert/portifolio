@@ -1,0 +1,36 @@
+---
+description: Portfolio project rules — Mechanical Pastoral, Environment, poteto-mode
+alwaysApply: true
+---
+
+# Portfolio (Pedro Haubert)
+
+## Aesthetic
+
+- Direction: **Mechanical Pastoral** (dithered neoclassical). Full brief: `docs/project/aesthetic-definition.md`.
+- Typeface: **EfT Mecanical** (OFL) at `docs/project/media/fonts/EFT_Mecanical/`.
+- Mood refs: `docs/project/media/references/`. Do not clone reference sites.
+
+## Scope v1
+
+Follow `docs/project/scope-v1.md`.
+
+**In:** intro + experience, blog, GitHub-hosted code, dither hero, subtle ASCII/canvas, projects list, RSS, dark+light (dark default), long About, Now, Uses/setup, i18n PT/EN, drafts.
+
+**Out:** newsletter, talks/decks, press kit, colophon/stack page.
+
+## Agent workflow
+
+- Always run **poteto-mode** (`~/.cursor/skills/poteto-mode/SKILL.md` after env install, or Project `skills-mirror/poteto-mode/`). Put that absolute path in every worker kickoff.
+- Skills come from `.cursor/skills-mirror.tgz` (env `install`) and/or Project mirror `/cursor/stores/self/skills-mirror/`. Index: `docs/project/skills-mirror-index.md`.
+
+## Environment (critical)
+
+- Use existing Cloud Environment **portifolio** `67b3b94f-d27e-11f1-89ee-7aa6f0729b11` (repo `pedroohaubert/portifolio`).
+- **Never** call `propose-environment-json`, `trigger-environment-build` with `environmentJson` from chat, or `request-environment-setup-actions` for Save. Those reopen the orphan “Environment setup / ready to be saved” loop.
+- Edit `.cursor/environment.json` via a worker already on that Environment. Pedro Activates builds only on the dashboard.
+- New Cursor Projects must **link** this Environment. Do not create a parallel orphan Environment from chat.
+
+## Context map
+
+Start at `docs/project/README.md`. Preferences: `docs/project/preferences.md`.

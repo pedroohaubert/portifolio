@@ -1,0 +1,6 @@
+# Preferences
+
+- Cloud Environment `portifolio` (`67b3b94f-d27e-11f1-89ee-7aa6f0729b11`, repo `pedroohaubert/portifolio`) is the source of truth. NEVER call `propose-environment-json`, `trigger-environment-build` with environmentJson from this Project coordinator, or `request-environment-setup-actions` for Save — they reopen the stuck “Environment setup / ready to be saved” loop. Edit `.cursor/environment.json` via a worker in that Environment; Pedro Activates builds only on the dashboard. (2026-10-28)
+- Always run poteto-mode for this Project: the coordinator and every dispatched agent must follow `/poteto-mode` (skill at `~/.cursor/skills/poteto-mode/SKILL.md` after env install, or the pstack plugin path / Project `skills-mirror/poteto-mode/`). Put that absolute skill path in every worker kickoff. (2026-10-28)
+- Cloud agents use Pedro’s skills from the repo tarball `.cursor/skills-mirror.tgz` + Project mirror `/cursor/stores/self/skills-mirror/` (index `docs/project/skills-mirror-index.md`). Prefer Mac self-hosted when live plugin skills matter. (2026-10-27)
+- Durable Project briefs also live in-repo under `docs/project/` so a **new Cursor Project** can link the existing Environment without relying only on Agent Store. (2026-10-28)
